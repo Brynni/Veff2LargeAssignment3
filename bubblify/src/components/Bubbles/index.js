@@ -13,6 +13,7 @@ export default class Bubbles extends React.Component {
         const data = await response.json()
         this.setState({ bubbles: data });
         this.setState({loading: false });
+        console.log(this.state);
     };
 
     render() {
