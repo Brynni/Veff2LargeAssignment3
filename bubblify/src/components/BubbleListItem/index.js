@@ -1,8 +1,8 @@
 import React from 'react';
 
 const BubbleListItem = ({ id, name, description, image, price}) => (
-    <div className="bubble">
-        <div className="bubble-name"><h3>{ name }</h3></div>
+    <div className="card card-body bg-light bubble">
+        <div className="bubble-name text-primary"><h3>{ name }</h3></div>
         <div className="img">
             <img src= { image } />
         </div>
