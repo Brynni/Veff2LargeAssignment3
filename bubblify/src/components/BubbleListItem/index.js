@@ -1,8 +1,9 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const BubbleListItem = ({ id, name, description, image, price}) => (
     <div className="card card-body bg-light bubble">
-        <div className="bubble-name text-primary"><h3>{ name }</h3></div>
+        <h3 className="bubble-name text-primary"><Link to={`/bubbles/${id}`}>{name}</Link></h3>
         <div className="img">
             <img src= { image } />
         </div>
