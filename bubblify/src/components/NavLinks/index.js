@@ -4,13 +4,22 @@ import { NavLink } from 'react-router-dom';
 const NavLinks = () => (
     <ul className="nav-links">
         <li>
-            <a href="#">Bubbles</a>
+            <NavLink
+                exact
+                to="/"
+                className="navigation-link">Bubbles</NavLink>
         </li>
         <li>
-            <a href="#">Bundles</a>
+            <NavLink
+                exact
+                to="/bundles"
+                className="navigation-link">Bundles</NavLink>
         </li>
         <li>
-            <a href="#">About</a>
+            <NavLink
+                exact
+                to="/about"
+                className="navigation-link">About us</NavLink>
         </li>
         <li>
             <a href="#">Cart</a>
