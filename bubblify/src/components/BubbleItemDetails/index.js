@@ -25,7 +25,7 @@ class BubbleItemDetails extends React.Component {
                     : <div className="card card-body bg-light bubble">
                     <h3 className="bubble-name text-primary">{name}</h3>
                     <div className="img">
-                        <img src= { image } />
+                        <img src={ image } alt="cart item"/>
                     </div>
                     <div className ="price">
                         <h4>Price : { price }</h4>

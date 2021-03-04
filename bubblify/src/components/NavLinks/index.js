@@ -3,6 +3,13 @@ import { NavLink } from 'react-router-dom';
 
 const NavLinks = () => (
     <ul className="nav-links">
+        
+        <li>
+            <NavLink
+                exact
+                to="/"
+                className="navigation-link"><img src="https://img.icons8.com/color/96/000000/bubble.png"/></NavLink>
+        </li>
         <li>
             <NavLink
                 exact
@@ -22,7 +29,10 @@ const NavLinks = () => (
                 className="navigation-link">About us</NavLink>
         </li>
         <li>
-            <a href="#">Cart</a>
+            <NavLink
+                    exact
+                    to="/cart"
+                    className="navigation-link">Cart</NavLink>
         </li>
 
 
