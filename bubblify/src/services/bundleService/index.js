@@ -29,3 +29,24 @@ export const getBubbles = async() => {
     return result.json();
 
 }
+
+
+export function getSingleBundle (bundles, bubbles){
+    // console.log(bundles);
+    // console.log(bubbles);
+    const bundleGroup = {};
+    const currentBundle = bundles;
+    const id = currentBundle.id;
+    bundleGroup[currentBundle.id] = {
+        ...currentBundle,
+        bubbles: [],
+    }
+    for (let j = 0; j < bundles.items.length; j++){
+        let num = bundles.items[j]-1;
+        bundleGroup[id].bubbles.push(bubbles[num]);
+    }
+
+    return bundleGroup;
+    
+}
+
