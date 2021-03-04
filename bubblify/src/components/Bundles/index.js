@@ -1,30 +1,34 @@
 import React from 'react';
-//import BundleList from './../BundleList';
+import BundleList from './../BundleList';
+import { getBubbleBundles, getBubbles } from '../../services/bundleService';
 
 export default class Bundles extends React.Component {
     state = {
         loading: true,
         bundles: [],
-        bubbles: [],
+            
     };
 
     async componentDidMount() {
-        const urlBundles = "http://localhost:3500/api/bundles";
-        const urlBubbles = "http://localhost:3500/api/bubbles";
-        const responseBundle = await fetch(urlBundles);
-        const repsonseBubble = await fetch(urlBubbles);
-        const bundles = await responseBundle.json();
-        const bubbles = await repsonseBubble.json();
-        this.setState({bundles: bundles, bubbles: bubbles, loading: false,})
+        const bundles = await getBubbleBundles();
+        const bundlesArr = [];
+        for (const key of Object.keys(bundles)) {
+            bundlesArr.push(bundles[key]);
+        };
+
+        this.setState({ bundles: bundlesArr, loading: false, });
+
     };
 
     render() {
+        const { bundles } = this.state;
+        console.log(this.state);
         return (
             <div>
                 {this.state.loading ? 
                     <div>loading</div> 
                     : <div>
-                        loaded <div/>    
+                        <BundleList bundles= { bundles } />    
                     </div>}
             </div>
         );

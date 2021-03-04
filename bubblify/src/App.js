@@ -5,6 +5,7 @@ import Bundles from './components/Bundles';
 import BubbleItemDetails from './components/BubbleItemDetails';
 import { Switch, Route, Redirect } from 'react-router-dom';
 import About from './components/About';
+import BundleItemDetails from './components/BundleItemDetails';
 import NotFound from './components/NotFound';
 import Cart from './components/Cart';
 import Checkout from './components/Checkout';
@@ -22,6 +23,7 @@ function App() {
           <Route exact path="/cart" component= { Cart } />
           <Route exact path="/bubbles/:bubbleItemId" component= { BubbleItemDetails } />
           <Route exact path="/checkout" component= { Checkout } />
+          <Route exact path="/bundles/:bundleItemId" component= { BundleItemDetails } />
           <Route path="*" component={ NotFound} />
 
         </Switch>
