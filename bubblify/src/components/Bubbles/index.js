@@ -26,7 +26,6 @@ export default class Bubbles extends React.Component {
 
     addItemToCart(id) {
         let shoppingCart = localStorage.getItem('shoppingCart');
-        console.log(shoppingCart);
         let myBubbles = this.state.bubbles.filter(n => n.id === id);
         myBubbles[0].quantity = 1;
         console.log(myBubbles);
@@ -42,13 +41,10 @@ export default class Bubbles extends React.Component {
                 if (shoppingCartObject[key].id === id)
                 {
                     shoppingCartObject[key].quantity++;
-                    console.log(shoppingCartObject[key].quantity);
                     itemFound = true; 
                 }
             }
             if (itemFound === false){
-                console.log(shoppingCart);
-                console.log(typeof(shoppingCartObject))
                 shoppingCartObject.push(myBubbles[0]);
             }
             localStorage.setItem('shoppingCart', JSON.stringify(shoppingCartObject));

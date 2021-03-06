@@ -6,14 +6,11 @@ export default class Cart extends React.Component {
     state = {
         loading: true,
         redirect: false,
-        bubbles: [],
+        bubbles: []
     };
 
     async componentDidMount() {
-        const url = "http://localhost:3500/api/bubbles";
-        const response = await fetch(url);
-        const data = await response.json()
-        this.setState({ bubbles: data });
+        
         this.setState({loading: false });
         this.setState({redirect: false });
         console.log(this.state);
@@ -29,7 +26,7 @@ export default class Cart extends React.Component {
                     <div>loading</div> 
                     : (
                         this.state.redirect ? 
-                        <Redirect to='/checkout' />
+                        <Redirect to='/cart/checkout' />
                         :
                     
                     <div>

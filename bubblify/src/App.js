@@ -9,6 +9,7 @@ import BundleItemDetails from './components/BundleItemDetails';
 import NotFound from './components/NotFound';
 import Cart from './components/Cart';
 import Checkout from './components/Checkout';
+import ReviewOrder from './components/ReviewOrder';
 
 function App() {
   return (
@@ -20,9 +21,10 @@ function App() {
           <Route exact path ="/bubbles" render={ () => <Redirect to="/" /> } />
           <Route exact path="/about" component= { About } />
           <Route exact path="/bundles" component= { Bundles } />
-          <Route exact path="/cart" component= { Cart } />
           <Route exact path="/bubbles/:bubbleItemId" component= { BubbleItemDetails } />
-          <Route exact path="/checkout" component= { Checkout } />
+          <Route exact path="/cart" component= { Cart } />
+          <Route exact path="/cart/checkout" component= { Checkout } />
+          <Route exact path="/cart/checkout/reviewOrder" component= { ReviewOrder } />
           <Route exact path="/bundles/:bundleItemId" component= { BundleItemDetails } />
           <Route path="*" component={ NotFound} />
 

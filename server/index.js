@@ -6,6 +6,7 @@ const cors = require('cors');
 const bubbleService = require('./services/bubbleService');
 var swaggerUi = require('swagger-ui-express');
 var swaggerDocument = require('./swagger.json');
+const { json } = require('body-parser');
 
 app.use(bodyParser.json());
 app.use(cors());
