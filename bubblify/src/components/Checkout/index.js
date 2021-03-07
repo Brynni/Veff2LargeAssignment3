@@ -47,7 +47,6 @@ export default class Checkout extends React.Component {
             }}/>)
         }
 
-        console.log(this.state);
         return (
             <div className="checkout">
                 <h1> Choose prefered handling of bubbles</h1>

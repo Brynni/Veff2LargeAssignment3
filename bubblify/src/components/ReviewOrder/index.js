@@ -36,7 +36,6 @@ export default class ReviewOrder extends React.Component {
             this.setState({ redirect: true });
             return res.ok;
          })
-        //.catch(err) => console.log(err));
         
     }
 
@@ -51,20 +50,21 @@ export default class ReviewOrder extends React.Component {
                         <OrderConfirmed state={this.state} />
                         :
                     
-                    <div>
-                        <div>
-                            <h1>Review Order</h1>
-                            <button
-                                type="button"
-                                className="btn btn-success"
-                                onClick= {this.handleConfirmation}>Confirm Order
-                                
-                            </button>
-                        </div>
-                        
-                        <BubbleCartList 
-                            bubbles = { bubbles } />    
-                    </div>)}
+                        (bubbles && 
+                            <>
+                                <div>
+                                    <h1>Review Order</h1>
+                                    <button
+                                        type="button"
+                                        className="btn btn-success"
+                                        onClick= {this.handleConfirmation}>Confirm Order
+                                        
+                                    </button>
+                                </div>
+                                <BubbleCartList bubbles = { bubbles } />
+                            </>
+                        ) 
+                    )}
             </div>
         );
     };

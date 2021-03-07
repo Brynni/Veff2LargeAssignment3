@@ -34,7 +34,6 @@ export default class Bundles extends React.Component {
         let shoppingCart = localStorage.getItem('shoppingCart');
         let myBubbles = this.state.bubbles.filter(n => n.id === id);
         myBubbles[0].quantity = 1;
-        console.log(myBubbles);
         let stringifiedBubbles =  JSON.stringify(myBubbles);
         if (shoppingCart === null)
         {

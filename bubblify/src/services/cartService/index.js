@@ -1,3 +1,5 @@
+import * as constants from '../urlConstants';
+
 export function cartPrompt(bubbleName) {
     if (window.confirm(`${bubbleName} has been added to cart! Proceed to checkout?!`)) {
         this.setState({redirect: true });
@@ -8,7 +10,6 @@ export function addItemToCart(id) {
     let shoppingCart = localStorage.getItem('shoppingCart');
     let myBubbles = this.state.bubbles.filter(n => n.id === id);
     myBubbles[0].quantity = 1;
-    console.log(myBubbles);
     let stringifiedBubbles =  JSON.stringify(myBubbles);
     if (shoppingCart === null)
     {
@@ -34,3 +35,10 @@ export function addItemToCart(id) {
     }
     this.cartPrompt(myBubbles[0].name);
   };
+
+
+export const GetAllOrdersForAUser = async(telephone) => {
+    const result = await fetch(constants.ORDERS+telephone);
+    if(!result.ok) { return []; }
+    return result.json();
+}

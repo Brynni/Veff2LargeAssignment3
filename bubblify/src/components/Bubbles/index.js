@@ -15,7 +15,6 @@ export default class Bubbles extends React.Component {
         const data = await response.json()
         this.setState({ bubbles: data });
         this.setState({loading: false });
-        console.log(this.state);
     };
 
     cartPrompt(bubbleName) {
@@ -28,7 +27,6 @@ export default class Bubbles extends React.Component {
         let shoppingCart = localStorage.getItem('shoppingCart');
         let myBubbles = this.state.bubbles.filter(n => n.id === id);
         myBubbles[0].quantity = 1;
-        console.log(myBubbles);
         let stringifiedBubbles =  JSON.stringify(myBubbles);
         if (shoppingCart === null)
         {

@@ -22,9 +22,7 @@ class BundleItemDetails extends React.Component {
              bundle = currBundle[key];
         };
         
-        
         this.setState({ bundle: bundle, bubbles: bubbles,loading: false, });
-        console.log(this.state);
 
     };
 
@@ -38,7 +36,6 @@ class BundleItemDetails extends React.Component {
         let shoppingCart = localStorage.getItem('shoppingCart');
         let myBubbles = this.state.bubbles.filter(n => n.id === id);
         myBubbles[0].quantity = 1;
-        //console.log(myBubbles);
         let stringifiedBubbles =  JSON.stringify(myBubbles);
         if (shoppingCart === null)
         {
@@ -66,7 +63,6 @@ class BundleItemDetails extends React.Component {
       };
 
     render() {
-        console.log(this.state.bubbles);
         const { name, bubbles } = this.state.bundle;
         
         if (this.state.redirect) {

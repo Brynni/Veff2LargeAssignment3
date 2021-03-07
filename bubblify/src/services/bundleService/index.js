@@ -27,13 +27,10 @@ export const getBubbles = async() => {
     const result = await fetch(constants.BUBBLES);
     if(!result.ok) { return []; }
     return result.json();
-
 }
 
 
 export function getSingleBundle (bundles, bubbles){
-    // console.log(bundles);
-    // console.log(bubbles);
     const bundleGroup = {};
     const currentBundle = bundles;
     const id = currentBundle.id;
