@@ -24,6 +24,7 @@ export default class Cart extends React.Component {
         if (this.state.redirect) {
             return <Redirect to='/cart/checkout' />;
         }
+        
         return (
             <>
                 <h1>Shopping Cart</h1>
