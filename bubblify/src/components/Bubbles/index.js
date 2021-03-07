@@ -1,7 +1,6 @@
 import React from 'react';
 import { Redirect } from 'react-router-dom'
 import BubbleList from './../BubbleList';
-import { PropTypes } from 'prop-types';
 
 export default class Bubbles extends React.Component {
     state = {
@@ -58,7 +57,7 @@ export default class Bubbles extends React.Component {
     
 
     render() {
-        const { bubbles, addItemToCart } = this.props.Bubbles;
+        const { bubbles, addItemToCart } = this.state;
         return (
             <div>
                 {this.state.loading ? 
@@ -80,7 +79,3 @@ export default class Bubbles extends React.Component {
     };
 }
 
-Bubbles.PropTypes = {
-    bubbles: PropTypes.arrayOf(PropTypes.objects),
-    addItemToCart: PropTypes.func, 
-}

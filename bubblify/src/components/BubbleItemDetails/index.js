@@ -1,9 +1,10 @@
 import React from 'react';
+import BubbleList from '../BubbleList'
 
 class BubbleItemDetails extends React.Component {
     state = {
         loading: true,
-        bubble: {},
+        bubbles: [],
     };
     
     async componentDidMount() {
@@ -12,28 +13,64 @@ class BubbleItemDetails extends React.Component {
         
         const response = await fetch(url);
         const data = await response.json()
-        this.setState({ bubble: data });
+        this.setState({ bubbles: [data] });
         this.setState({loading: false });
     };
 
+    cartPrompt(bubbleName) {
+        if (window.confirm(`${bubbleName} has been added to cart! Proceed to checkout?!`)) {
+            this.setState({redirect: true });
+        } 
+    }
+
+    addItemToCart(id) {
+        let shoppingCart = localStorage.getItem('shoppingCart');
+        let myBubbles = this.state.bubbles.filter(n => n.id === id);
+        myBubbles[0].quantity = 1;
+        console.log(myBubbles);
+        let stringifiedBubbles =  JSON.stringify(myBubbles);
+        if (shoppingCart === null)
+        {
+            localStorage.setItem('shoppingCart', stringifiedBubbles);
+        }
+        else {
+            let shoppingCartObject = JSON.parse(shoppingCart);
+            let itemFound = false;
+            for (let key in shoppingCartObject) {
+                if (shoppingCartObject[key].id === id)
+                {
+                    shoppingCartObject[key].quantity++;
+                    itemFound = true; 
+                }
+            }
+            if (itemFound === false){
+                shoppingCartObject.push(myBubbles[0]);
+            }
+            localStorage.setItem('shoppingCart', JSON.stringify(shoppingCartObject));
+
+
+            
+        }
+        this.cartPrompt(myBubbles[0].name);
+      }
+
     render() {
-        const { name, description, price, image } = this.state.bubble;
+        const { bubbles } = this.state;
+        //console.log(this.props);
         return (
             <div>
                 {this.state.loading ? 
                     <div>loading</div> 
-                    : <div className="card card-body bg-light bubble">
-                    <h3 className="bubble-name text-primary">{name}</h3>
-                    <div className="img">
-                        <img src={ image } alt="cart item"/>
-                    </div>
-                    <div className ="price">
-                        <h4>Price : { price }</h4>
-                    </div>
-                    <div className="description"><p>{ description }</p></div>
-                </div>}
+                    : 
+                    <div>
+                    <BubbleList 
+                        bubbles = { bubbles } 
+                        addItemToCart={ id => this.addItemToCart(id) } 
+                        />    
+                </div>  }
             </div>
         )
+        
     }
 };
 
