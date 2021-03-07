@@ -1,6 +1,7 @@
 import React from 'react';
 import { getBubbles, getSingleBundle } from '../../services/bundleService';
 import BubbleList from '../BubbleList';
+import { Redirect } from 'react-router-dom'
 
 class BundleItemDetails extends React.Component {
     state = {
@@ -68,6 +69,10 @@ class BundleItemDetails extends React.Component {
         console.log(this.state.bubbles);
         const { name, bubbles } = this.state.bundle;
         
+        if (this.state.redirect) {
+            return <Redirect to='/cart/checkout' />;
+        }
+
         return (
             <div>
                 {this.state.loading ? 
