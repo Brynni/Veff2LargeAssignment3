@@ -9,8 +9,7 @@ class BubbleItemDetails extends React.Component {
     
     async componentDidMount() {
         const bubbleId = this.props.match.params.bubbleItemId;
-        const url = `http://localhost:3500/api/bubbles/${bubbleId}`;
-        
+        const url = `http://localhost:3500/api/bubbles/${bubbleId}`;     
         const response = await fetch(url);
         const data = await response.json()
         this.setState({ bubbles: [data] });
