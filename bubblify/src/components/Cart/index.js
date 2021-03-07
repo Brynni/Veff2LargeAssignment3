@@ -9,8 +9,7 @@ export default class Cart extends React.Component {
         bubbles: []
     };
 
-    async componentDidMount() {
-        
+    async componentDidMount() {    
         this.setState({loading: false });
         this.setState({redirect: false });
         console.log(this.state);
@@ -18,31 +17,32 @@ export default class Cart extends React.Component {
     
     render() {
         const bubbles = JSON.parse(localStorage.getItem('shoppingCart'));
-        console.log(bubbles);
-        console.log(this.state);
+        if (this.state.loading) {
+            return <div>loading</div>;
+        }
+
+        if (this.state.redirect) {
+            return <Redirect to='/cart/checkout' />;
+        }
+        
         return (
-            <div>
-                {this.state.loading ? 
-                    <div>loading</div> 
-                    : (
-                        this.state.redirect ? 
-                        <Redirect to='/cart/checkout' />
-                        :
-                    
-                    <div>
-                        <div>
-                            <h1>Shopping Cart</h1>
-                            <button
-                                type="button"
-                                className="btn btn-danger"
-                                onClick= { ()=> this.setState({redirect: true }) }>Proceed to checkout
-                            </button>
-                        </div>
-                        
-                        <BubbleCartList 
-                            bubbles = { bubbles } />    
-                    </div>)}
-            </div>
+            <>
+                <h1>Shopping Cart</h1>
+                { !!bubbles ?
+                    <>
+                        <button
+                            type="button"
+                            className="btn btn-danger"
+                            onClick= { ()=> this.setState({redirect: true }) }>
+                                Proceed to checkout
+                        </button>
+                            
+                        <BubbleCartList bubbles = { bubbles } />
+                    </>
+                    :
+                    <p>Cart is empty!</p>
+                }
+            </>
         );
     };
 }

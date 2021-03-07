@@ -1,13 +1,14 @@
 import React from 'react';
 import BundleList from './../BundleList';
 import { getBubbleBundles, getBubbles } from '../../services/bundleService';
+import { Redirect } from 'react-router-dom'
 
 export default class Bundles extends React.Component {
     state = {
         loading: true,
+        redirect: false,
         bundles: [],
-        bubbles: [],
-            
+        bubbles: []
     };
 
     async componentDidMount() {
@@ -59,11 +60,16 @@ export default class Bundles extends React.Component {
         }
         this.cartPrompt(myBubbles[0].name);
       };
+
     
 
     render() {
         const { bundles } = this.state;
-        console.log(this.state);
+        
+        if (this.state.redirect) {
+            return <Redirect to='/cart/checkout' />;
+        }
+
         return (
             <div>
                 {this.state.loading ? 
